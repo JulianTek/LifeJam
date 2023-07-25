@@ -27,6 +27,10 @@ private void Update()
         Vector2 movementVector = controls.Player.Movement.ReadValue<Vector2>();
         if (movementVector != Vector2.zero)
             EventChannels.InputEvents.OnPlayerMove?.Invoke(movementVector);
+
+        float switchFloat = controls.Player.SwitchCrops.ReadValue<Vector2>().y;
+        if (switchFloat != 0f)
+            EventChannels.InputEvents.OnPlayerSwitchCrops?.Invoke(switchFloat);
     }
 
     private void Interact(InputAction.CallbackContext ctx)

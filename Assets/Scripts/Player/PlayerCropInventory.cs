@@ -16,17 +16,34 @@ public class PlayerCropInventory : MonoBehaviour
         selectedIndex = 0;
 
         EventChannels.InputEvents.OnPlayerInteract += PlantCrop;
+        EventChannels.InputEvents.OnPlayerSwitchCrops += SwitchCrop;
     }
 
     private void OnDestroy()
     {
         EventChannels.InputEvents.OnPlayerInteract -= PlantCrop;
+        EventChannels.InputEvents.OnPlayerSwitchCrops -= SwitchCrop;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void SwitchCrop(float direction)
+    {
+        int nextIndex = (int)direction;
+        selectedIndex += nextIndex;
+        if (crops.Count - 1 < selectedIndex)
+        {
+            selectedIndex = 0;
+        }
+        if (selectedIndex < 0)
+        {
+            selectedIndex = crops.Count - 1;
+        }
+        Debug.Log(crops[selectedIndex]);
     }
 
     void PlantCrop()

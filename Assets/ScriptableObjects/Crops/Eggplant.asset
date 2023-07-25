@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 136c45d70c7ed3648b759e4d06eb3ae1, type: 3}
-  m_Name: corn
+  m_Name: Eggplant
   m_EditorClassIdentifier: 
-  Name: Corn
+  Name: Eggplant
   Sprites:
   - {fileID: 623675458, guid: 2b06172fb4b107740a896649e885684c, type: 3}
   - {fileID: -632620551, guid: 2b06172fb4b107740a896649e885684c, type: 3}

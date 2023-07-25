@@ -8,10 +8,13 @@ namespace EventSystem
     {
         public delegate void MovementEvent(Vector2 movementVector);
         public delegate void ButtonEvent();
+        public delegate void ArrowKeysEvent(float direction);
 
         public MovementEvent OnPlayerMove;
 
         public ButtonEvent OnPlayerInteract;
+
+        public ArrowKeysEvent OnPlayerSwitchCrops;
     }
 }
 

@@ -36,7 +36,7 @@ public class ObjectPoolHandler : MonoBehaviour
     public static void ReturnObjectToPool(GameObject obj)
     {
         string goName = obj.name.Substring(0, obj.name.Length - 7); // Removes (Clone from the object name)
-        PooledObjectInfo pool = ObjectPools.Find(p => p.LookupString == obj.name);
+        PooledObjectInfo pool = ObjectPools.Find(p => p.LookupString == goName);
 
         if (pool == null)
         {

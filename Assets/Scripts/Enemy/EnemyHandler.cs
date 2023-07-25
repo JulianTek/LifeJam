@@ -70,10 +70,6 @@ public class EnemyHandler : MonoBehaviour
         // if colliding object is the player
         if (other.gameObject.CompareTag("Player"))
             playerIsInTrigger = true;
-        else if (other.gameObject.CompareTag("Projectile"))
-        {
-            // take damage
-        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -95,5 +91,6 @@ public class EnemyHandler : MonoBehaviour
         enemyHealth -= damage;
         if (enemyHealth <= 0)
             ObjectPoolHandler.ReturnObjectToPool(gameObject);
+        Debug.Log(enemyHealth);
     }
 }

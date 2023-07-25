@@ -6,12 +6,13 @@ using UnityEngine;
 public class PlantHandler : MonoBehaviour
 {
     private bool isFullyGrown;
-    private bool timerStarted;
+    private bool growthTimerStarted;
     private float timerDuration;
     private float timerLeft;
     private Crop _crop;
 
     private bool enemyInContactCollider;
+    private bool enemyInMeleeCollider;
 
     [SerializeField]
     private GameObject projectilePrefab;
@@ -28,12 +29,17 @@ public class PlantHandler : MonoBehaviour
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
+    private void OnDisable()
+    {
+        ResetCrop();
+    }
+
     public void SetCrop(Crop crop)
     {
         // Set crop data,timer duration and start timer
         _crop = crop;
         timerDuration = _crop.TimeToGrow;
-        timerStarted = true;
+        growthTimerStarted = true;
     }
 
     void HandleColliders()
@@ -56,7 +62,7 @@ public class PlantHandler : MonoBehaviour
 
     private void Update()
     {
-        if (timerStarted && !isFullyGrown)
+        if (growthTimerStarted && !isFullyGrown)
         {
             timerLeft += Time.deltaTime;
 
@@ -65,6 +71,7 @@ public class PlantHandler : MonoBehaviour
                 isFullyGrown = true;
                 _spriteRenderer.sprite = _crop.Sprites[_crop.Sprites.Length - 1];
                 HandleColliders();
+                timerLeft = 0;
             }
 
             // Create number between 0 and 1 to indicate growth progress
@@ -77,10 +84,29 @@ public class PlantHandler : MonoBehaviour
         {
             EventChannels.EnemyEvents.OnEnemyTakesDamage(_crop.DamagePerHit);
         }
+
+        if (enemyInMeleeCollider)
+        {
+            timerLeft += Time.deltaTime;
+            if (timerLeft >= 2f)
+            {
+                EventChannels.EnemyEvents.OnEnemyTakesDamage?.Invoke(_crop.DamagePerHit);
+                timerLeft = 0;
+                Debug.Log("EnemyHit");
+            }
+        }
+
+        if (isFullyGrown)
+        {
+            _spriteRenderer.sprite = _crop.Sprites[_crop.Sprites.Length - 1];
+            timerLeft += Time.deltaTime;
+            if (timerLeft >= _crop.Duration)
+                ObjectPoolHandler.ReturnObjectToPool(gameObject);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
-    {    
+    {
         if (!isFullyGrown)
             return;
         if (other.gameObject.CompareTag("Enemy"))
@@ -88,8 +114,10 @@ public class PlantHandler : MonoBehaviour
             switch (_crop.DamageType)
             {
                 case DamageType.Melee:
+                    enemyInMeleeCollider = true;    
                     break;
                 case DamageType.Contact:
+                    enemyInContactCollider = true;
                     break;
                 case DamageType.Projectile:
                     GameObject projectile = ObjectPoolHandler.SpawnObject(projectilePrefab, transform.position, Quaternion.identity);
@@ -101,5 +129,29 @@ public class PlantHandler : MonoBehaviour
                     break;
             }
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            if (_crop.DamageType == DamageType.Contact)
+                enemyInContactCollider = false;
+            else if (_crop.DamageType == DamageType.Melee)
+                enemyInMeleeCollider = false;
+        }
+    }
+
+    void MeleeDamage(float damage)
+    {
+        EventChannels.EnemyEvents.OnEnemyTakesDamage?.Invoke(damage);
+    }
+
+    void ResetCrop()
+    {
+        _crop = null;
+        timerLeft = 0;
+        isFullyGrown = false;
+        growthTimerStarted = false;
     }
 }

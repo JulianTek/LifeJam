@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 136c45d70c7ed3648b759e4d06eb3ae1, type: 3}
+  m_Name: Watermelon
+  m_EditorClassIdentifier: 
+  Name: Watermelon
+  Sprites:
+  - {fileID: -732709585, guid: fe44eec302b7713469d67713bf081cbd, type: 3}
+  - {fileID: 1083174038, guid: fe44eec302b7713469d67713bf081cbd, type: 3}
+  - {fileID: 726748200, guid: fe44eec302b7713469d67713bf081cbd, type: 3}
+  - {fileID: -950466738, guid: fe44eec302b7713469d67713bf081cbd, type: 3}
+  - {fileID: -1380553994, guid: fe44eec302b7713469d67713bf081cbd, type: 3}
+  TimeToGrow: 20
+  DamagePerHit: 0.02
+  Duration: 20
+  DamageType: 1

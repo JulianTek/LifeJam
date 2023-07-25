@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cd1ebbb5e1621746a972409814e45fb, type: 3}
   m_Name: Bee
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  EnemyName: 
-  EnemyHealth: 0
-  EnemyDamage: 0
+  sprite: {fileID: 21300000, guid: 99d4960be48042d4989d891b255e5d3d, type: 3}
+  EnemyName: Bee
+  EnemyHealth: 10
+  EnemyDamage: 2
