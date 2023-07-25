@@ -13,6 +13,8 @@ public class EnemyHandler : MonoBehaviour
     private bool enemyIsActive;
     private Enemy enemyData;
 
+    private float enemyHealth;
+
     private bool playerIsInTrigger;
     [SerializeField]
     private float attackCooldown;
@@ -27,6 +29,8 @@ public class EnemyHandler : MonoBehaviour
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         EventChannels.PlayerEvents.OnUpdatePlayerPosition += SetPlayerPosition;
         SetEnemy(debugEnemy);
+
+        EventChannels.EnemyEvents.OnEnemyTakesDamage += TakeDamage;
     }
 
     private void SetPlayerPosition(Vector3 pos)
@@ -66,6 +70,10 @@ public class EnemyHandler : MonoBehaviour
         // if colliding object is the player
         if (other.gameObject.CompareTag("Player"))
             playerIsInTrigger = true;
+        else if (other.gameObject.CompareTag("Projectile"))
+        {
+            // take damage
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -79,5 +87,13 @@ public class EnemyHandler : MonoBehaviour
         enemyData = enemy;
         spriteRenderer.sprite = enemy.sprite;
         enemyIsActive = true;
+        enemyHealth = enemyData.EnemyHealth;
+    }
+
+    void TakeDamage(float damage)
+    {
+        enemyHealth -= damage;
+        if (enemyHealth <= 0)
+            ObjectPoolHandler.ReturnObjectToPool(gameObject);
     }
 }

@@ -9,5 +9,6 @@ namespace EventSystem
         public delegate void DamageEvent(float damage);
 
         public DamageEvent OnEnemyDealsDamage;
+        public DamageEvent OnEnemyTakesDamage;
     }
 }
