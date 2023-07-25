@@ -19,14 +19,15 @@ public class PlantHandler : MonoBehaviour
     void Start()
     {
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        _spriteRenderer.sprite = _crop.Sprites[0];
     }
 
     public void SetCrop(Crop crop)
     {
+        // Set crop data,timer duration and start timer
         _crop = crop;
         timerDuration = _crop.TimeToGrow;
         timerStarted = true;
+        _spriteRenderer.sprite = _crop.Sprites[0];
     }
 
     private void Update()
