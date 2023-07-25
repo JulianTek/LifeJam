@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "Crop", menuName = "LifeJam/Create new crop")]
 public class Crop : ScriptableObject
 {
     public string Name;
-    public Sprite Sprite;
+    public Sprite[] Sprites;
     public float TimeToGrow;
     public float DamagePerHit;
+    public float Duration;
     public DamageType DamageType;
 }
 
