@@ -18,7 +18,7 @@ MonoBehaviour:
   - {fileID: -632620551, guid: 2b06172fb4b107740a896649e885684c, type: 3}
   - {fileID: -1397286531, guid: 2b06172fb4b107740a896649e885684c, type: 3}
   - {fileID: 361124155, guid: 2b06172fb4b107740a896649e885684c, type: 3}
-  TimeToGrow: 10
-  DamagePerHit: 5
-  Duration: 5
-  DamageType: 0
+  TimeToGrow: 15
+  DamagePerHit: 3
+  Duration: 10
+  DamageType: 2

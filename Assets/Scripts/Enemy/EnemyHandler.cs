@@ -84,6 +84,7 @@ public class EnemyHandler : MonoBehaviour
         spriteRenderer.sprite = enemy.sprite;
         enemyIsActive = true;
         enemyHealth = enemyData.EnemyHealth;
+        EventChannels.UIEvents.OnSetEnemyHealthbar?.Invoke(enemy);
     }
 
     void TakeDamage(float damage)
@@ -91,6 +92,7 @@ public class EnemyHandler : MonoBehaviour
         enemyHealth -= damage;
         if (enemyHealth <= 0)
             ObjectPoolHandler.ReturnObjectToPool(gameObject);
-        Debug.Log(enemyHealth);
+        EventChannels.UIEvents.OnUpdateEnemyHealthbar?.Invoke(enemyHealth);
+
     }
 }

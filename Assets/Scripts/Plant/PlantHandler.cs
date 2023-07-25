@@ -82,7 +82,7 @@ public class PlantHandler : MonoBehaviour
         }
         if (enemyInContactCollider)
         {
-            EventChannels.EnemyEvents.OnEnemyTakesDamage(_crop.DamagePerHit);
+            EventChannels.EnemyEvents.OnEnemyTakesDamage?.Invoke(_crop.DamagePerHit);
         }
 
         if (enemyInMeleeCollider)
@@ -140,11 +140,6 @@ public class PlantHandler : MonoBehaviour
             else if (_crop.DamageType == DamageType.Melee)
                 enemyInMeleeCollider = false;
         }
-    }
-
-    void MeleeDamage(float damage)
-    {
-        EventChannels.EnemyEvents.OnEnemyTakesDamage?.Invoke(damage);
     }
 
     void ResetCrop()

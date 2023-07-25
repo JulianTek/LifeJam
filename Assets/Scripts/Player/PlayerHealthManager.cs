@@ -27,9 +27,8 @@ public class PlayerHealthManager : MonoBehaviour
 
     void TakeDamage(float damage)
     {
-            playerHealth -= damage;
-            Debug.Log($"Damage dealt {damage}");
-            Debug.Log($"player health is {playerHealth}");
+        playerHealth -= damage;
+        EventChannels.UIEvents.OnUpdatePlayerHealthbar?.Invoke(playerHealth);
         if (playerHealth <= 0)
             Destroy(gameObject);
     }
