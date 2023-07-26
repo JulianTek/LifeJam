@@ -34,8 +34,11 @@ public static class APIHandler
         byte[] postData = Encoding.UTF8.GetBytes(jsonData);
 
         // Create the UnityWebRequest object with the complete URL
-        UnityWebRequest request = UnityWebRequest.Post(url + endpoint, jsonData);
-        request.SetRequestHeader("Content-Type", "application/json; charset=utf-8");
+        // Create the UnityWebRequest object with the complete URL
+        UnityWebRequest request = new UnityWebRequest(url + endpoint, "POST");
+        request.uploadHandler = new UploadHandlerRaw(postData);
+        request.downloadHandler = new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
 
         // Send the request and wait for a response
         yield return request.SendWebRequest();
