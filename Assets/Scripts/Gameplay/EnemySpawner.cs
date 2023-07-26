@@ -34,5 +34,6 @@ public class EnemySpawner : MonoBehaviour
     {
         GameObject enemyObject = ObjectPoolHandler.SpawnObject(enemyPrefab, transform.position, Quaternion.identity);
         enemyObject.GetComponent<EnemyHandler>().SetEnemy(enemy);
+        Debug.Log(APIHandler.GetAllEnemies()[0].enemyName);
     }
 }
