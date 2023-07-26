@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Net;
-using Unity.Plastic.Newtonsoft.Json;
+using Newtonsoft.Json;
 
 public static class APIHandler
 {
@@ -17,7 +17,7 @@ public static class APIHandler
         {
             StreamReader reader = new StreamReader(response.GetResponseStream());
             string json = reader.ReadToEnd();
-            var result = JsonConvert.DeserializeObject<List<dynamic>>(json);
+            var result = JsonConvert.DeserializeObject<APIResult>(json);
         }
         return null;
     }
