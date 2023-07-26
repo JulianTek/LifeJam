@@ -8,6 +8,6 @@ public class Enemy : ScriptableObject
 {
     public Sprite sprite;
     public string EnemyName;
-    public float EnemyHealth;
-    public float EnemyDamage;
+    public int EnemyHealth;
+    public int EnemyDamage;
 }
