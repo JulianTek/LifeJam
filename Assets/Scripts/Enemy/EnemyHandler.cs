@@ -26,10 +26,7 @@ public class EnemyHandler : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         EventChannels.PlayerEvents.OnUpdatePlayerPosition += SetPlayerPosition;
-        SetEnemy(debugEnemy);
-
         EventChannels.EnemyEvents.OnEnemyTakesDamage += TakeDamage;
     }
 
@@ -40,7 +37,7 @@ public class EnemyHandler : MonoBehaviour
 
     void OnEnable()
     {
-
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -78,7 +75,7 @@ public class EnemyHandler : MonoBehaviour
             playerIsInTrigger = false;
     }
 
-    void SetEnemy(Enemy enemy)
+    public void SetEnemy(Enemy enemy)
     {
         enemyData = enemy;
         spriteRenderer.sprite = enemy.sprite;
