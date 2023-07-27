@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EventSystem;
 
 public class PlayerExperienceHandler : MonoBehaviour
 {
@@ -11,6 +12,12 @@ public class PlayerExperienceHandler : MonoBehaviour
     {
         playerLevel = 1;
         totalExperience = 0;
+        EventChannels.PlayerEvents.OnAddExperience += AddExperience;
+    }
+
+    private void OnDestroy()
+    {
+        EventChannels.PlayerEvents.OnAddExperience -= AddExperience;
     }
 
     private int GetExperienceNeededForLevel(int level)
@@ -31,8 +38,14 @@ public class PlayerExperienceHandler : MonoBehaviour
 
     private void AddExperience(int experience)
     {
-        totalExperience += experience;
-        if (GetLevelUp())
-            playerLevel++;
+        if (playerLevel < 10)
+        {
+            totalExperience += experience;
+            if (GetLevelUp())
+            {
+                playerLevel++;
+                EventChannels.PlayerEvents.OnPlayerLevelUp(playerLevel);
+            }
+        }
     }
 }

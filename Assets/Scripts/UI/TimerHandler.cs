@@ -6,8 +6,7 @@ using System;
 
 public class TimerHandler : MonoBehaviour
 {
-    private float timer;
-    [SerializeField]
+    public float timer;
     private TextMeshProUGUI timerText;
     // Start is called before the first frame update
     void Start()

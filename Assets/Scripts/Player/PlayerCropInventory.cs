@@ -7,6 +7,8 @@ public class PlayerCropInventory : MonoBehaviour
 {
     [SerializeField]
     private List<Crop> crops = new List<Crop>();
+    [SerializeField]
+    private List<Crop> allCrops = new List<Crop>();
     private int selectedIndex;
     [SerializeField]
     private GameObject objectToPlant;
@@ -17,18 +19,25 @@ public class PlayerCropInventory : MonoBehaviour
 
         EventChannels.InputEvents.OnPlayerInteract += PlantCrop;
         EventChannels.InputEvents.OnPlayerSwitchCrops += SwitchCrop;
+        EventChannels.PlayerEvents.OnPlayerLevelUp += UnlockCrop;
     }
 
     private void OnDestroy()
     {
         EventChannels.InputEvents.OnPlayerInteract -= PlantCrop;
         EventChannels.InputEvents.OnPlayerSwitchCrops -= SwitchCrop;
+        EventChannels.PlayerEvents.OnPlayerLevelUp -= UnlockCrop;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void UnlockCrop(int level)
+    {
+        crops.Add(crops[level - 1]);
     }
 
     void SwitchCrop(float direction)

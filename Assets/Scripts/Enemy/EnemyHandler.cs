@@ -9,8 +9,6 @@ public class EnemyHandler : MonoBehaviour
 {
     [SerializeField]
     private float movementSpeed;
-    [SerializeField]
-    private Enemy debugEnemy;
     private bool enemyIsActive;
     private Enemy enemyData;
 
@@ -27,6 +25,7 @@ public class EnemyHandler : MonoBehaviour
     private float timer;
 
     private Vector3 playerPosition;
+    private Vector3 randomOffset;
 
     private SpriteRenderer spriteRenderer;
     // Start is called before the first frame update
@@ -45,6 +44,7 @@ public class EnemyHandler : MonoBehaviour
     void OnEnable()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        randomOffset = new Vector3(Random.Range(-10f, 10f), 0f, Random.Range(-10f, 10f));
     }
 
     // Update is called once per frame
@@ -65,7 +65,10 @@ public class EnemyHandler : MonoBehaviour
 
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, playerPosition, movementSpeed * Time.deltaTime);
+        Vector3 targetPosition = playerPosition + randomOffset;
+
+        // Move the enemy towards the target position
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, movementSpeed * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)

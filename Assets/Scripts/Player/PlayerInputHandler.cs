@@ -14,6 +14,7 @@ public class PlayerInputHandler : MonoBehaviour
         controls.Enable();
 
         controls.Player.UseItem.performed += Interact;
+        controls.Player.SwitchCrops.performed += SwitchCrops;
     }
 
     private void OnDestroy()
@@ -22,15 +23,16 @@ public class PlayerInputHandler : MonoBehaviour
     }
 
 
-private void Update()
+    void SwitchCrops(InputAction.CallbackContext ctx)
+    {
+        EventChannels.InputEvents.OnPlayerSwitchCrops?.Invoke(controls.Player.SwitchCrops.ReadValue<Vector2>().y);
+    }
+
+    private void Update()
     {
         Vector2 movementVector = controls.Player.Movement.ReadValue<Vector2>();
         if (movementVector != Vector2.zero)
             EventChannels.InputEvents.OnPlayerMove?.Invoke(movementVector);
-
-        float switchFloat = controls.Player.SwitchCrops.ReadValue<Vector2>().y;
-        if (switchFloat != 0f)
-            EventChannels.InputEvents.OnPlayerSwitchCrops?.Invoke(switchFloat);
     }
 
     private void Interact(InputAction.CallbackContext ctx)

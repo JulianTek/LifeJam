@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 99d4960be48042d4989d891b255e5d3d, type: 3}
   EnemyName: Bee
-  EnemyHealth: 10
+  EnemyHealth: 1
   EnemyDamage: 2

@@ -10,7 +10,7 @@ using System.Linq;
 
 public static class APIHandler
 {
-    private const string url = "https://localhost:7212/";
+    private const string url = "https://localhost:5001/";
 
     public static List<EnemyDTO> GetAllEnemies()
     {
@@ -65,6 +65,7 @@ public static class APIHandler
             string responseJson = request.downloadHandler.text;
             Debug.Log("Response: " + responseJson);
         }
+        request.Dispose();
     }
 
     public static IEnumerator DeleteAll()
@@ -87,5 +88,6 @@ public static class APIHandler
             string responseJson = request.downloadHandler.text;
             Debug.Log("Response: " + responseJson);
         }
+        request.Dispose();
     }
 }

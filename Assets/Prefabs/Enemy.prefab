@@ -374,6 +374,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7029339853121727465}
   - component: {fileID: 7029339853121727470}
+  - component: {fileID: 5831277872596469805}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -411,8 +412,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 2
-  debugEnemy: {fileID: 0}
-  attackCooldown: 0
+  experienceCoinObject: {fileID: 8458337656679726905, guid: 9d914d7de778f7b46860ee25c0bfc1d7,
+    type: 3}
+  attackCooldown: 1
+--- !u!65 &5831277872596469805
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7029339853121727464}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.15, y: 0.15, z: 0.15}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8138080974900550153
 GameObject:
   m_ObjectHideFlags: 0

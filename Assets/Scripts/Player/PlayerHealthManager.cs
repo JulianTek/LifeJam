@@ -21,8 +21,8 @@ public class PlayerHealthManager : MonoBehaviour
 
     private void OnDestroy()
     {
+        EventChannels.PlayerEvents.OnGameOver?.Invoke();
         EventChannels.EnemyEvents.OnEnemyDealsDamage -= TakeDamage;
-        // Game over!
     }
 
     void TakeDamage(float damage)
