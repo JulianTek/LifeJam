@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using EventSystem;
 using System;
+using Random = UnityEngine.Random;
 
 public class EnemyHandler : MonoBehaviour
 {
@@ -13,7 +14,12 @@ public class EnemyHandler : MonoBehaviour
     private bool enemyIsActive;
     private Enemy enemyData;
 
+    [SerializeField]
+    private GameObject experienceCoinObject;
+
     private float enemyHealth;
+
+    private float experienceChance;
 
     private bool playerIsInTrigger;
     [SerializeField]
@@ -28,6 +34,7 @@ public class EnemyHandler : MonoBehaviour
     {
         EventChannels.PlayerEvents.OnUpdatePlayerPosition += SetPlayerPosition;
         EventChannels.EnemyEvents.OnEnemyTakesDamage += TakeDamage;
+        experienceChance = 85;
     }
 
     private void SetPlayerPosition(Vector3 pos)
@@ -88,8 +95,19 @@ public class EnemyHandler : MonoBehaviour
     {
         enemyHealth -= damage;
         if (enemyHealth <= 0)
+        {
+            if (RollForXPDrop())
+            {
+                ObjectPoolHandler.SpawnObject(experienceCoinObject, transform.position, Quaternion.identity);
+            }
             ObjectPoolHandler.ReturnObjectToPool(gameObject);
+        }
         EventChannels.UIEvents.OnUpdateEnemyHealthbar?.Invoke(enemyHealth);
 
+    }
+
+    bool RollForXPDrop()
+    {
+        return Random.Range(0f, 100f) <= experienceChance;
     }
 }
