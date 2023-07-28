@@ -37,7 +37,7 @@ public class PlayerCropInventory : MonoBehaviour
 
     void UnlockCrop(int level)
     {
-        crops.Add(crops[level - 1]);
+        crops.Add(allCrops[level - 1]);
     }
 
     void SwitchCrop(float direction)

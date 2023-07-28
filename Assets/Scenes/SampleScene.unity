@@ -1247,7 +1247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36a7564356076a459bd1b170d9e7814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cropIcons:
+  iconsOnHUD:
   - {fileID: 678411928}
   - {fileID: 1226765127}
   - {fileID: 167241996}
@@ -1258,6 +1258,17 @@ MonoBehaviour:
   - {fileID: 1448795320}
   - {fileID: 985478158}
   - {fileID: 1770594604}
+  cropIcons:
+  - {fileID: 21300000, guid: a73f26029a1ce904098420c4844ddbc7, type: 3}
+  - {fileID: 21300000, guid: 3cd96d6f5590e9f438264060a5c2cb59, type: 3}
+  - {fileID: 21300000, guid: 345db469fd1e5d043807893866f35f4b, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &934256204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2134,6 +2145,40 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7500763777858501648, guid: 5d4875a2a701c224cb785ca3796afbbc,
+        type: 3}
+      propertyPath: crops.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7500763777858501648, guid: 5d4875a2a701c224cb785ca3796afbbc,
+        type: 3}
+      propertyPath: allCrops.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7500763777858501648, guid: 5d4875a2a701c224cb785ca3796afbbc,
+        type: 3}
+      propertyPath: crops.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: c7b442c18d4e627469494816f2a4ae50,
+        type: 2}
+    - target: {fileID: 7500763777858501648, guid: 5d4875a2a701c224cb785ca3796afbbc,
+        type: 3}
+      propertyPath: crops.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: db3d1431e178c7a419040a4335f94f6c,
+        type: 2}
+    - target: {fileID: 7500763777858501648, guid: 5d4875a2a701c224cb785ca3796afbbc,
+        type: 3}
+      propertyPath: allCrops.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c7b442c18d4e627469494816f2a4ae50,
+        type: 2}
+    - target: {fileID: 7500763777858501648, guid: 5d4875a2a701c224cb785ca3796afbbc,
+        type: 3}
+      propertyPath: allCrops.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: db3d1431e178c7a419040a4335f94f6c,
+        type: 2}
     - target: {fileID: 7500763777858501649, guid: 5d4875a2a701c224cb785ca3796afbbc,
         type: 3}
       propertyPath: m_RootOrder
