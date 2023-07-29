@@ -16,3 +16,4 @@ MonoBehaviour:
   EnemyName: Butterfly
   EnemyHealth: 10
   EnemyDamage: 1
+  EnemySpeed: 2.2

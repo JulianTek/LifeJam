@@ -16,3 +16,4 @@ MonoBehaviour:
   EnemyName: Snail
   EnemyHealth: 4
   EnemyDamage: 3
+  EnemySpeed: 1.3

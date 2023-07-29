@@ -16,3 +16,4 @@ MonoBehaviour:
   EnemyName: Bee
   EnemyHealth: 1
   EnemyDamage: 2
+  EnemySpeed: 2
