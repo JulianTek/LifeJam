@@ -12,10 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 136c45d70c7ed3648b759e4d06eb3ae1, type: 3}
   m_Name: Rice
   m_EditorClassIdentifier: 
-  Name: 
-  Sprites: []
+  Name: Rice
+  Sprites:
+  - {fileID: 1726473312, guid: b5942af75092a2448b0b182a4a97fb69, type: 3}
+  - {fileID: -851066406, guid: b5942af75092a2448b0b182a4a97fb69, type: 3}
+  - {fileID: 408758728, guid: b5942af75092a2448b0b182a4a97fb69, type: 3}
+  - {fileID: -1274780159, guid: b5942af75092a2448b0b182a4a97fb69, type: 3}
+  - {fileID: -1447114198, guid: b5942af75092a2448b0b182a4a97fb69, type: 3}
   InventorySprite: {fileID: 21300000, guid: 3cd96d6f5590e9f438264060a5c2cb59, type: 3}
-  TimeToGrow: 0
-  DamagePerHit: 0
-  Duration: 0
-  DamageType: 0
+  TimeToGrow: 20
+  DamagePerHit: 0.05
+  Duration: 20
+  DamageType: 1

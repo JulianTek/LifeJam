@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Eggplant
   Sprites:
-  - {fileID: 623675458, guid: 2b06172fb4b107740a896649e885684c, type: 3}
-  - {fileID: -632620551, guid: 2b06172fb4b107740a896649e885684c, type: 3}
-  - {fileID: -1397286531, guid: 2b06172fb4b107740a896649e885684c, type: 3}
-  - {fileID: 361124155, guid: 2b06172fb4b107740a896649e885684c, type: 3}
-  TimeToGrow: 15
-  DamagePerHit: 3
-  Duration: 10
+  - {fileID: -1978942761, guid: a82b05334a57a094f811b2772daab33d, type: 3}
+  - {fileID: -170454984, guid: a82b05334a57a094f811b2772daab33d, type: 3}
+  - {fileID: -1992482810, guid: a82b05334a57a094f811b2772daab33d, type: 3}
+  - {fileID: -573861599, guid: a82b05334a57a094f811b2772daab33d, type: 3}
+  - {fileID: -327193400, guid: a82b05334a57a094f811b2772daab33d, type: 3}
+  InventorySprite: {fileID: 21300000, guid: 1dca7d71268d8c54eb58591f0b787864, type: 3}
+  TimeToGrow: 20
+  DamagePerHit: 8
+  Duration: 25
   DamageType: 2
