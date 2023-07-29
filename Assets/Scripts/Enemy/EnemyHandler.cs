@@ -7,8 +7,6 @@ using Random = UnityEngine.Random;
 
 public class EnemyHandler : MonoBehaviour
 {
-    [SerializeField]
-    private float movementSpeed;
     private bool enemyIsActive;
     private Enemy enemyData;
 
@@ -68,7 +66,7 @@ public class EnemyHandler : MonoBehaviour
         Vector3 targetPosition = playerPosition + randomOffset;
 
         // Move the enemy towards the target position
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, movementSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, enemyData.EnemySpeed * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)

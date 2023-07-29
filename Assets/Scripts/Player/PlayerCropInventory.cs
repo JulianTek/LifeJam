@@ -32,12 +32,13 @@ public class PlayerCropInventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void UnlockCrop(int level)
     {
-        crops.Add(allCrops[level - 1]);
+        if (level - 1 <= 6)
+            crops.Add(allCrops[level - 1]);
     }
 
     void SwitchCrop(float direction)
@@ -52,7 +53,6 @@ public class PlayerCropInventory : MonoBehaviour
         {
             selectedIndex = crops.Count - 1;
         }
-        Debug.Log(crops[selectedIndex]);
     }
 
     void PlantCrop()
