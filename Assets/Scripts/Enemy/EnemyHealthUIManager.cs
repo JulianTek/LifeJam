@@ -15,12 +15,12 @@ public class EnemyHealthUIManager : MonoBehaviour
         EventChannels.UIEvents.OnUpdateEnemyHealthbar += UpdateEnemyHealth;
     }
 
-    void SetEnemyHealth(float enemyHealth)
+    public void SetEnemyHealth(float enemyHealth)
     {
         healthbar.maxValue = enemyHealth;
     }
 
-    void UpdateEnemyHealth(float enemyhealth)
+    public void UpdateEnemyHealth(float enemyhealth)
     {
         healthbar.value = enemyhealth;
     }

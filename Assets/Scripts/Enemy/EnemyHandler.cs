@@ -42,7 +42,7 @@ public class EnemyHandler : MonoBehaviour
     void OnEnable()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        randomOffset = new Vector3(Random.Range(-10f, 10f), 0f, Random.Range(-10f, 10f));
+
     }
 
     // Update is called once per frame
@@ -57,7 +57,7 @@ public class EnemyHandler : MonoBehaviour
             timer += Time.deltaTime;
             if (timer >= attackCooldown)
             {
-                EventChannels.EnemyEvents.OnEnemyDealsDamage?.Invoke(enemyData.EnemyDamage);
+                EventChannels.EnemyEvents.OnEnemyDealsDamage?.Invoke(enemyData.EnemyDamage, gameObject);
                 timer = 0;
             }
 
@@ -66,15 +66,23 @@ public class EnemyHandler : MonoBehaviour
         Vector3 targetPosition = playerPosition + randomOffset;
 
         // Move the enemy towards the target position
+        randomOffset = new Vector3(Random.Range(-5f, 5f), 0f, Random.Range(-2f, 2f));
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, enemyData.EnemySpeed * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        var handler = other.gameObject.GetComponent<CropProjectileHandler>();
         Debug.Log(other.gameObject.name);
         // if colliding object is the player
         if (other.gameObject.CompareTag("Player"))
             playerIsInTrigger = true;
+        else if (handler != null)
+        {
+            TakeDamage(1.5f, gameObject);
+            ObjectPoolHandler.ReturnObjectToPool(other.gameObject);
+        }
+
     }
 
     private void OnTriggerExit(Collider other)
@@ -92,19 +100,20 @@ public class EnemyHandler : MonoBehaviour
         EventChannels.UIEvents.OnSetEnemyHealthbar?.Invoke(enemy);
     }
 
-    void TakeDamage(float damage)
+    public void TakeDamage(float damage, GameObject enemyToDamage)
     {
-        enemyHealth -= damage;
-        if (enemyHealth <= 0)
+        if (ReferenceEquals(enemyToDamage, gameObject))
         {
-            if (RollForXPDrop())
+            enemyHealth -= damage;
+            if (enemyHealth <= 0)
             {
-                ObjectPoolHandler.SpawnObject(experienceCoinObject, transform.position, Quaternion.identity);
+                if (RollForXPDrop())
+                {
+                    ObjectPoolHandler.SpawnObject(experienceCoinObject, transform.position, Quaternion.identity);
+                }
+                ObjectPoolHandler.ReturnObjectToPool(gameObject);
             }
-            ObjectPoolHandler.ReturnObjectToPool(gameObject);
         }
-        EventChannels.UIEvents.OnUpdateEnemyHealthbar?.Invoke(enemyHealth);
-
     }
 
     bool RollForXPDrop()

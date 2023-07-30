@@ -38,14 +38,20 @@ public class PlayerExperienceHandler : MonoBehaviour
 
     private void AddExperience(int experience)
     {
-        if (playerLevel < 10)
+        if (playerLevel < 6)
         {
             totalExperience += experience;
             if (GetLevelUp())
             {
                 playerLevel++;
                 EventChannels.PlayerEvents.OnPlayerLevelUp(playerLevel);
+                totalExperience = 0;
             }
         }
+    }
+
+    public int GetLevel()
+    {
+        return playerLevel;
     }
 }

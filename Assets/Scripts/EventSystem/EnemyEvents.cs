@@ -6,7 +6,7 @@ namespace EventSystem
 {
     public class EnemyEvents
     {
-        public delegate void DamageEvent(float damage);
+        public delegate void DamageEvent(float damage, GameObject gameObject);
         public delegate void EnergyEvent(int energy);
         public delegate int GetEnergyEvent();
 

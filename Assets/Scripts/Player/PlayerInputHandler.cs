@@ -7,6 +7,9 @@ using UnityEngine.InputSystem;
 public class PlayerInputHandler : MonoBehaviour
 {
     private PlayerControls controls;
+    private float timer = 0f;
+    private float maxCooldown = 2f;
+    private bool canPlant = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,10 +36,22 @@ public class PlayerInputHandler : MonoBehaviour
         Vector2 movementVector = controls.Player.Movement.ReadValue<Vector2>();
         if (movementVector != Vector2.zero)
             EventChannels.InputEvents.OnPlayerMove?.Invoke(movementVector);
+
+        timer += Time.deltaTime;
+        if (timer >= maxCooldown)
+        {
+            canPlant = true;
+            timer = 0f;
+        }
     }
 
     private void Interact(InputAction.CallbackContext ctx)
     {
-        EventChannels.InputEvents.OnPlayerInteract?.Invoke();
+        if (canPlant)
+        {
+            EventChannels.InputEvents.OnPlayerInteract?.Invoke();
+            canPlant = false;
+        }
+
     }
 }

@@ -13,8 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Caine
-  productName: Farmer John and the Angry Swarm of Insects Coming After His Magical
-    Crops
+  productName: Farmer John and the Angry Swarm Coming After His Magical Crops
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.93725497, g: 0.81568635, b: 0.32156864, a: 1}
@@ -139,7 +138,8 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleVersion: 1.0.0
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: 11400000, guid: 7e13353d36ede6f40847ab8e5c0a1263, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1

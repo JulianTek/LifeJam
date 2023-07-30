@@ -427,7 +427,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   m_LocalRotation: {x: 0.21718009, y: 0, z: 0, w: 0.97613156}
-  m_LocalPosition: {x: 0.69, y: 4.7399263, z: -9.056656}
+  m_LocalPosition: {x: 0.69, y: 4.837927, z: -9.056656}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -821,7 +821,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &662064247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -836,6 +836,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyDatas:
   - {fileID: 11400000, guid: 32ededf1c177b164da6d145bea61329c, type: 2}
+  - {fileID: 11400000, guid: cbd5dc13d2ccdde4693a6e026ab2d49f, type: 2}
+  - {fileID: 11400000, guid: 0aa6f65e41d63c74fbbbe7f78c7ccdfc, type: 2}
+  - {fileID: 11400000, guid: c65e2266b449b2040b088c08855774f2, type: 2}
   enemySpawners:
   - {fileID: 1606396454}
   - {fileID: 909051297}
@@ -2432,7 +2435,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1883866120}
   m_LocalRotation: {x: 0.21718009, y: -0, z: -0, w: 0.97613156}
-  m_LocalPosition: {x: 0.69, y: 4.7399263, z: -9.056656}
+  m_LocalPosition: {x: 0.69, y: 4.837927, z: -9.056656}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2621,6 +2624,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 712499820, guid: 5d4875a2a701c224cb785ca3796afbbc, type: 3}
+      propertyPath: m_Size.y
+      value: 0.43914407
+      objectReference: {fileID: 0}
+    - target: {fileID: 712499820, guid: 5d4875a2a701c224cb785ca3796afbbc, type: 3}
+      propertyPath: m_Center.y
+      value: -0.19457206
+      objectReference: {fileID: 0}
     - target: {fileID: 7500763777858501648, guid: 5d4875a2a701c224cb785ca3796afbbc,
         type: 3}
       propertyPath: crops.Array.size
@@ -2629,8 +2640,14 @@ PrefabInstance:
     - target: {fileID: 7500763777858501648, guid: 5d4875a2a701c224cb785ca3796afbbc,
         type: 3}
       propertyPath: allCrops.Array.size
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7500763777858501648, guid: 5d4875a2a701c224cb785ca3796afbbc,
+        type: 3}
+      propertyPath: crops.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1871d5223ff055a4d80bf2c32c9eb308,
+        type: 2}
     - target: {fileID: 7500763777858501648, guid: 5d4875a2a701c224cb785ca3796afbbc,
         type: 3}
       propertyPath: crops.Array.data[1]
@@ -2692,7 +2709,7 @@ PrefabInstance:
     - target: {fileID: 7500763777858501649, guid: 5d4875a2a701c224cb785ca3796afbbc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0.598
       objectReference: {fileID: 0}
     - target: {fileID: 7500763777858501649, guid: 5d4875a2a701c224cb785ca3796afbbc,
         type: 3}

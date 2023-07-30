@@ -25,7 +25,7 @@ public class PlayerHealthManager : MonoBehaviour
         EventChannels.EnemyEvents.OnEnemyDealsDamage -= TakeDamage;
     }
 
-    void TakeDamage(float damage)
+    void TakeDamage(float damage, GameObject go)
     {
         playerHealth -= damage;
         EventChannels.UIEvents.OnUpdatePlayerHealthbar?.Invoke(playerHealth);

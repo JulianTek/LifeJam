@@ -13,6 +13,7 @@ public class PlantHandler : MonoBehaviour
 
     private bool enemyInContactCollider;
     private bool enemyInMeleeCollider;
+    private GameObject enemy;
 
     [SerializeField]
     private GameObject projectilePrefab;
@@ -82,7 +83,7 @@ public class PlantHandler : MonoBehaviour
         }
         if (enemyInContactCollider)
         {
-            EventChannels.EnemyEvents.OnEnemyTakesDamage?.Invoke(_crop.DamagePerHit);
+            EventChannels.EnemyEvents.OnEnemyTakesDamage?.Invoke(_crop.DamagePerHit, enemy);
         }
 
         if (enemyInMeleeCollider)
@@ -90,7 +91,7 @@ public class PlantHandler : MonoBehaviour
             timerLeft += Time.deltaTime;
             if (timerLeft >= 2f)
             {
-                EventChannels.EnemyEvents.OnEnemyTakesDamage?.Invoke(_crop.DamagePerHit);
+                EventChannels.EnemyEvents.OnEnemyTakesDamage?.Invoke(_crop.DamagePerHit, enemy);
                 timerLeft = 0;
                 Debug.Log("EnemyHit");
             }
@@ -122,12 +123,12 @@ public class PlantHandler : MonoBehaviour
                 case DamageType.Projectile:
                     GameObject projectile = ObjectPoolHandler.SpawnObject(projectilePrefab, transform.position, Quaternion.identity);
                     Vector3 directionToShoot = new Vector3(other.transform.position.x - transform.position.x, 0, other.transform.position.y - transform.position.y);
-                    projectile.GetComponent<Rigidbody>().AddForce(directionToShoot * 4f, ForceMode.Impulse);
-                    Debug.Log(directionToShoot);
+                    projectile.GetComponent<Rigidbody>().AddForce(directionToShoot * 2f, ForceMode.Impulse);
                     break;
                 default:
                     break;
             }
+            enemy = other.gameObject;
         }
     }
 
